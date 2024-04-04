@@ -1,7 +1,7 @@
 class EntityCache
   module Store
     class Internal
-      include Virtual
+      include TemplateMethod
       include Log::Dependency
 
       attr_accessor :subject
@@ -20,7 +20,7 @@ class EntityCache
         instance
       end
 
-      abstract :records
+      template_method! :records
 
       def get(id)
         logger.trace { "Getting Entity (ID: #{id.inspect})" }

@@ -8,7 +8,7 @@ class EntityCache
           include ::Configure
           include Dependency
           include Initializer
-          include Virtual
+          include TemplateMethod
           include Log::Dependency
 
           extend Build
@@ -20,9 +20,9 @@ class EntityCache
 
           initializer :subject
 
-          virtual :configure
-          abstract :get
-          abstract :put
+          template_method :configure
+          template_method! :get
+          template_method! :put
 
           prepend Configure
           prepend Get
